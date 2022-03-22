@@ -12,9 +12,9 @@ import { LogLevel } from "@azure/msal-browser";
  */
 export const msalConfig = {
     auth: {
-        clientId: "Enter_the_Application_Id_Here",
-        authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
-        redirectUri: "Enter_the_Redirect_Uri_Here"
+        clientId: "eea619ad-603a-4b03-a386-860fcc7410d1",
+        authority: "https://login.microsoftonline.com/common/",
+        redirectUri: "https://localhost:7274/"
     },
     cache: {
         cacheLocation: "sessionStorage", // This configures where your cache will be stored
@@ -52,7 +52,19 @@ export const msalConfig = {
  * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
  */
 export const loginRequest = {
-    scopes: ["User.Read"]
+    scopes: [
+        // OIDC scopes
+        "offline_access",
+
+        // Graph scopes
+        "Calendars.Read",
+        "Contacts.Read",
+        "User.Read.All",
+        "User.Read",
+        "People.Read",
+        "OnlineMeetings.Read",
+        "Presence.Read.All"
+    ]
 };
 
 /**
@@ -60,5 +72,5 @@ export const loginRequest = {
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md
  */
 export const graphConfig = {
-    graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me"
+    graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
